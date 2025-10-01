@@ -1,0 +1,388 @@
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('fonts/Inconsolata-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('fonts/Inconsolata-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('fonts/Inconsolata-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('fonts/Inconsolata-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+:root {
+    --neutral-0: hsl(0, 0%, 100%);
+    --neutral-300: hsl(252, 6%, 83%);
+    --neutral-500: hsl(245, 15%, 58%);
+    --neutral-700: hsl(245, 19%, 35%);
+    --neutral-900: hsl(248, 70%, 10%);
+    --orange-500: hsl(7, 88%, 67%);
+    --orange-700: hsl(7, 71%, 60%);
+    --gradient-text: linear-gradient(to right, hsl(7, 86%, 67%), hsl(0, 0%, 100%));
+    --font-family: 'Inconsolata', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--neutral-900);
+    color: var(--neutral-0);
+    background-image: url('./images/background-mobile.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo {
+    width: 150px;
+}
+
+.intro-text {
+    text-align: center;
+}
+
+.intro-text h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+}
+
+.intro-text p {
+    font-size: 1rem;
+    color: var(--neutral-300);
+}
+
+#ticket-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 450px;
+    transform: scale(0.9);
+    margin: 0 auto;
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-control label {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.form-control input[type="text"],
+.form-control input[type="email"] {
+    background-color: transparent;
+    border: 2px solid var(--neutral-700);
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 1rem;
+    color: var(--neutral-0);
+    width: 100%;
+    transition: border-color 0.3s;
+}
+
+.form-control input[type="text"]::placeholder,
+.form-control input[type="email"]::placeholder {
+    color: var(--neutral-500);
+}
+
+.form-control input[type="text"]:focus,
+.form-control input[type="email"]:focus {
+    outline: none;
+    border-color: var(--orange-500);
+}
+
+.drop-zone {
+    border: 2px dashed var(--neutral-700);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.drop-zone.dragover {
+    background-color: hsla(248, 70%, 10%, 0.5);
+    border-color: var(--orange-500);
+}
+
+.drop-zone-prompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.drop-zone-prompt img {
+    width: 40px;
+}
+
+.avatar-preview-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.avatar-preview {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.avatar-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-secondary {
+    background: transparent;
+    border: none;
+    color: var(--neutral-300);
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-secondary:hover {
+    color: var(--orange-500);
+}
+
+.hint {
+    font-size: 0.9rem;
+    color: var(--neutral-500);
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.error-message {
+    font-size: 0.9rem;
+    color: var(--orange-500);
+    margin-top: 0.5rem;
+    display: none;
+}
+
+.form-control.error input {
+    border-color: var(--orange-500);
+}
+.form-control.error .drop-zone {
+    border-color: var(--orange-500);
+}
+
+.form-control.error .error-message {
+    display: block;
+}
+
+.btn-primary {
+    background-color: var(--orange-500);
+    color: var(--neutral-900);
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--orange-700);
+}
+.btn-primary:focus {
+    outline: 2px solid var(--orange-500);
+    outline-offset: 2px;
+}
+
+.ticket-section {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.ticket-intro {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.ticket-intro h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+.ticket-intro h1 span {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.ticket-intro p {
+    font-size: 1rem;
+    color: var(--neutral-300);
+}
+.ticket-intro p span {
+    color: var(--orange-500);
+    font-weight: bold;
+}
+
+.ticket-container {
+    display: flex;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.ticket {
+    background-image: url('./images/pattern-ticket.svg');
+    background-color: #332d4e;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 2rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transform: rotateY(0deg);
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    animation: flipIn 1s ease-out;
+}
+
+.ticket-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.ticket-header .conf-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.ticket-header .conf-details {
+    color: var(--neutral-300);
+}
+
+.ticket-body {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.ticket-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.ticket-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.ticket-github {
+    color: var(--neutral-300);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ticket-number {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    border-left: 2px dashed var(--neutral-700);
+    color: var(--neutral-300);
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes flipIn {
+    from {
+        transform: rotateY(90deg) scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: rotateY(0deg) scale(1);
+        opacity: 1;
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        background-image: url('./images/background-tablet.png');
+    }
+    .container {
+        max-width: 680px;
+    }
+    .intro-text h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        background-image: url('./images/background-desktop.png');
+    }
+    .container {
+        max-width: 600px;
+    }
+    .intro-text h1 {
+        font-size: 2.5rem;
+    }
+    .ticket-intro h1 {
+        font-size: 2.5rem;
+    }
+}
+
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
