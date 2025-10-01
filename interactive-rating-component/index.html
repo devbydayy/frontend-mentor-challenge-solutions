@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Interactive rating component</title>
+</head>
+<body>
+  <div class="container">
+    <div class="rating-card" id="ratingCard">
+      <div class="star-icon-wrapper">
+        <img src="./images/icon-star.svg" alt="Star Icon">
+      </div>
+      <h1>How did we do?</h1>
+      <p class="text-paragraph">Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
+      <div class="rating-buttons">
+        <button type="button" class="rating-btn" value="1">1</button>
+        <button type="button" class="rating-btn" value="2">2</button>
+        <button type="button" class="rating-btn" value="3">3</button>
+        <button type="button" class="rating-btn" value="4">4</button>
+        <button type="button" class="rating-btn" value="5">5</button>
+      </div>
+      <button type="submit" class="submit-btn" id="submitBtn">Submit</button>
+    </div>
+    <div class="thank-you-card" id="thankYouCard">
+      <img src="./images/illustration-thank-you.svg" alt="Thank you illustration" class="thank-you-image">
+      <div class="rating-result" id="ratingResult">You selected 4 out of 5</div>
+      <h2 class="thank-you-heading">Thank you!</h2>
+      <p class="text-paragraph">We appreciate you taking the time to give a rating. If you ever need more support, don't hesitate to get in touch!</p>
+    </div>
+  </div>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">DevbyDay</a>.
+  </div>
+  <script src="script.js" defer></script>
+</body>
+</html>
