@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <title>Frontend Mentor | Calculator app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="1">
+
+    <main class="calculator">
+        <header class="calculator-header">
+            <h1>calc</h1>
+            <div class="theme-switcher">
+                <p>Theme</p>
+                <div class="theme-toggle-container">
+                    <div class="theme-labels">
+                        <label for="theme1">1</label>
+                        <label for="theme2">2</label>
+                        <label for="theme3">3</label>
+                    </div>
+                    <div class="theme-toggle">
+                        <input type="radio" name="theme" id="theme1" value="1" checked>
+                        <label for="theme1"></label>
+
+                        <input type="radio" name="theme" id="theme2" value="2">
+                        <label for="theme2"></label>
+
+                        <input type="radio" name="theme" id="theme3" value="3">
+                        <label for="theme3"></label>
+
+                        <div class="slider"></div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="calculator-screen" id="display">0</div>
+
+        <div class="calculator-keypad">
+            <button class="keypad-btn" data-value="7">7</button>
+            <button class="keypad-btn" data-value="8">8</button>
+            <button class="keypad-btn" data-value="9">9</button>
+            <button class="keypad-btn keypad-btn--func" data-action="delete">DEL</button>
+            
+            <button class="keypad-btn" data-value="4">4</button>
+            <button class="keypad-btn" data-value="5">5</button>
+            <button class="keypad-btn" data-value="6">6</button>
+            <button class="keypad-btn" data-action="add">+</button>
+            
+            <button class="keypad-btn" data-value="1">1</button>
+            <button class="keypad-btn" data-value="2">2</button>
+            <button class="keypad-btn" data-value="3">3</button>
+            <button class="keypad-btn" data-action="subtract">-</button>
+            
+            <button class="keypad-btn" data-action="decimal">.</button>
+            <button class="keypad-btn" data-value="0">0</button>
+            <button class="keypad-btn" data-action="divide">/</button>
+            <button class="keypad-btn" data-action="multiply">x</button>
+            
+            <button class="keypad-btn keypad-btn--func keypad-btn--reset" data-action="reset">RESET</button>
+            <button class="keypad-btn keypad-btn--equal" data-action="calculate">=</button>
+        </div>
+        <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+        Coded by <a href="#">DevbyDay</a>.
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
