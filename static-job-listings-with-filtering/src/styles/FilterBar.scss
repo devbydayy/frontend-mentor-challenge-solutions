@@ -1,0 +1,57 @@
+@import "variables";
+@import "mixins";
+
+.filter-bar {
+  background: white;
+  margin: -40px auto 20px;
+  padding: 1.2rem;
+  border-radius: 6px;
+  @include flex-between;
+  max-width: 1065px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+
+  .filter-tags {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    .filter-tag {
+      background: $green-50;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+
+      span {
+        padding: 0.5rem;
+        color: $green-400;
+        font-weight: bold;
+      }
+
+      button {
+        background: $green-400;
+        border: none;
+        color: white;
+        padding: 0.5rem;
+        cursor: pointer;
+        border-radius: 0 4px 4px 0;
+
+        &:hover {
+          background: $green-900;
+        }
+      }
+    }
+  }
+
+  .clear {
+    background: none;
+    border: none;
+    color: $gray-400;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+      color: $green-400;
+      text-decoration: underline;
+    }
+  }
+}
