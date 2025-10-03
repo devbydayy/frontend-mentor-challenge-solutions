@@ -1,0 +1,108 @@
+@import 'mixins';
+
+.form-container {
+  @include mobile {
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: $magnolia;
+  }
+  @include desktop {
+    flex-direction: row;
+    width: 940px;
+    height: 600px;
+    padding: 16px;
+    border-radius: 15px;
+    background-color: $white;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.sidebar {
+  @include mobile {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 172px;
+    padding-top: 32px;
+    background-image: url('./images/bg-sidebar-mobile.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    gap: 16px;
+  }
+  @include desktop {
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 274px;
+    height: 100%;
+    padding: 40px 32px;
+    border-radius: 10px;
+    background-image: url('./images/bg-sidebar-desktop.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    gap: 32px;
+  }
+}
+
+.step-info {
+  @include mobile {
+    display: none;
+  }
+  @include desktop {
+    display: block;
+  }
+}
+
+.form-content {
+  @include mobile {
+    width: calc(100% - 32px);
+    margin: -74px auto 0;
+    padding: 32px 24px;
+    border-radius: 10px;
+    background-color: $white;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+    margin-bottom: 90px;
+  }
+  @include desktop {
+    width: calc(100% - 274px - 32px);
+    padding: 40px 80px 20px;
+    margin: 0;
+  }
+}
+
+
+.plan-options {
+    @include mobile {
+        flex-direction: column;
+    }
+    @include desktop {
+        flex-direction: row;
+    }
+}
+
+#step-5 {
+    @include mobile {
+        padding: 60px 0;
+    }
+    @include desktop {
+        padding: 0;
+    }
+}
+
+.button-container {
+    @include mobile {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 16px;
+        background-color: $white;
+    }
+    @include desktop {
+        position: static;
+        padding: 0;
+        margin-top: auto;
+    }
+}
+
