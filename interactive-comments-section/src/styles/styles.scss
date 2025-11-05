@@ -1,0 +1,307 @@
+
+$purple-600: hsl(238, 40%, 52%);
+$pink-400: hsl(358, 79%, 66%);
+$purple-200: hsl(239, 57%, 85%);
+$pink-200: hsl(357, 100%, 86%);
+
+$grey-800: hsl(212, 24%, 26%);
+$grey-500: hsl(211, 10%, 45%);
+$grey-100: hsl(223, 19%, 93%);
+$grey-50: hsl(228, 33%, 97%);
+$white: hsl(0,100%,100%);
+
+$radius: 12px;
+$font: "Rubik", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+
+* { box-sizing: border-box; }
+html,body,#root { height: 100%; }
+body {
+  font-family: $font;
+  background: $grey-50;
+  color: $grey-800;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 32px;
+  line-height: 1.5;
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+}
+
+.comment-area {
+  width: 100%;
+  max-width: 720px;
+  margin-bottom: 40px;
+}
+
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.comment-block {
+  position: relative;
+}
+
+.comment-footer {
+  display: none;
+}
+
+.comment {
+  display: flex;
+  gap: 20px;
+  background: $white;
+  border-radius: $radius;
+  padding: 18px;
+  overflow-wrap: break-word;   
+  word-break: break-word; 
+  box-shadow: 0 4px 12px rgba(20,20,30,0.04);
+  align-items: flex-start;
+
+  .vote-col {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: $grey-50;
+    padding: 8px;
+    border-radius: 8px;
+    min-width: 46px;
+    justify-content: center;
+    user-select: none;
+
+    .vote-btn {
+      border: none;
+      background: transparent;
+      font-weight: 700;
+      font-size: 18px;
+      cursor: pointer;
+      color: $purple-600;
+      width: 28px;
+      height: 28px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius: 6px;
+
+      &:hover { background: rgba(115,80,255,0.08); }
+      &:active { transform: translateY(1px); }
+    }
+
+    .score {
+      font-weight: 700;
+      color: $purple-600;
+    }
+  }
+
+  .main-col {
+    flex:1;
+
+    .comment-header {
+      display:flex;
+      align-items:center;
+      gap: 12px;
+    }
+    .avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+    }
+    .meta {
+      display:flex;
+      align-items:center;
+      gap:8px;
+      .username {
+        font-weight:700;
+        color: $grey-800;
+      }
+      .you-pill {
+        background: $purple-600;
+        color: white;
+        font-size: 12px;
+        padding: 3px 6px;
+        border-radius: 6px;
+      }
+      .time {
+        color: $grey-500;
+        font-size: 14px;
+      }
+    }
+    .actions {
+      
+      margin-left: auto;
+      display:flex;
+      gap: 12px;
+    }
+
+    .reply-btn,
+    .edit-btn,
+    .delete-btn {
+      border: none;
+      cursor: pointer;
+      background: transparent;
+      font-weight: 700;
+      color: $purple-600;
+      padding: 6px 8px;
+      border-radius: 8px;
+      transition: background .12s;
+      &:hover { background: rgba(115,80,255,0.08); }
+    }
+    .delete-btn {
+      color: $pink-400;
+      &:hover { background: rgba(255,0,50,0.06); }
+    }
+
+    .comment-body {
+      margin-top: 12px;
+      color: $grey-800;
+      font-size: 16px;
+
+      .reply-to { color: $purple-600; font-weight: 700; margin-right: 4px;}
+    }
+  }
+}
+
+.replies {
+  margin-left: 64px;
+  margin-top: 12px;
+
+  .comment {
+    background: $white;
+  }
+}
+
+.comment-form {
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  background: $white;
+  border-radius: $radius;
+  padding: 14px;
+  margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(20,20,30,.04);
+
+  .form-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+  }
+  .comment-input {
+    flex:1;
+    border: 1px solid $grey-100;
+    border-radius: 8px;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    outline: none;
+    &:focus { border-color: $purple-600; box-shadow: 0 0 0 3px rgba(115,80,255,0.08); }
+  }
+  .primary-btn {
+    background: $purple-600;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight:700;
+    &:hover { filter: brightness(0.95); }
+  }
+
+  &.small {
+    padding: 8px;
+    .comment-input { font-size: 14px; }
+    .primary-btn { padding: 8px 10px; }
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(10,10,20,0.45);
+  z-index: 60;
+
+  .modal {
+    background: $white;
+    width: min(560px, 72%);
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(10,10,30,0.2);
+    text-align:left;
+
+    h3 { margin: 0 0 8px 0; color: $grey-800; }
+    .modal-desc { color: $grey-500; margin-bottom: 18px; }
+    .modal-actions { display:flex; gap:12px; justify-content:center; }
+
+    .btn-cancel {
+      background: $grey-500; color: $white; padding: 14px 16px; border-radius:8px; border:none; cursor:pointer;
+      &:hover { filter: brightness(.98); }
+    }
+    .btn-delete {
+      background: $pink-400; color: white; padding: 14px 16px; border-radius:8px; border:none; cursor:pointer;
+      &:hover { filter: brightness(.95); }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  body { padding: 64px; 
+  max-width: 1030px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, $grey-50, $grey-50); }
+
+  .app-container { padding: 0 40px; }
+  .comment-area { max-width: 920px; }
+}
+
+@media (max-width: 760px) {
+  .comment-area { padding: 0 ; max-width: 475px; }
+  .comment {
+    flex-direction: row;
+    gap: 12px;
+    padding: 12px;
+  }
+  .replies { margin-left: 44px; }
+  .comment-form { padding: 10px; }
+
+    .comment > .vote-col {
+    display: none;
+  }
+  
+  .comment-header .actions {
+    display: none !important;
+  }
+
+    .comment-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+  }
+
+  .comment-footer .vote-col {
+    display: flex;
+    flex-direction: row;
+    background: $grey-50;
+    border-radius: 8px;
+    padding: 4px 8px;
+    width: auto;
+  }
+
+  .comment-footer .actions {
+    margin-left: auto;
+        display: flex;
+  }
+}
+
+button:focus { outline: 3px solid rgba(115,80,255,0.18); outline-offset: 2px; }
+
+.attribution { font-size: 11px; text-align: center; margin: 22px;}
+.attribution a { color: hsl(228, 45%, 44%); }
+
