@@ -1,0 +1,280 @@
+
+:root {
+  --clr-primary-400: hsl(220, 98%, 61%);
+  --clr-check-bg: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+
+  --ff-primary: 'Josefin Sans', sans-serif;
+  --fs-body: 18px;
+  --fw-normal: 400;
+  --fw-bold: 700;
+
+  --container-width: 540px;
+}
+
+.light-theme {
+  --clr-bg: hsl(0, 0%, 98%);
+  --clr-todo-bg: hsl(0, 0%, 98%);
+  --clr-text: hsl(235, 19%, 35%);
+  --clr-text-completed: hsl(233, 11%, 84%);
+  --clr-text-hover: hsl(235, 19%, 35%);
+  --clr-controls-text: hsl(236, 9%, 61%);
+  --clr-border: hsl(233, 11%, 84%);
+  --clr-header-bg-desktop: url('./images/bg-desktop-light.jpg');
+  --clr-header-bg-mobile: url('./images/bg-mobile-light.jpg');
+}
+
+.dark-theme {
+  --clr-bg: hsl(235, 21%, 11%);
+  --clr-todo-bg: hsl(235, 24%, 19%);
+  --clr-text: hsl(234, 39%, 85%);
+  --clr-text-completed: hsl(233, 14%, 35%);
+  --clr-text-hover: hsl(236, 33%, 92%);
+  --clr-controls-text: hsl(235, 16%, 43%);
+  --clr-border: hsl(237, 14%, 26%);
+  --clr-header-bg-desktop: url('./images/bg-desktop-dark.jpg');
+  --clr-header-bg-mobile: url('./images/bg-mobile-dark.jpg');
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-normal);
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  line-height: 1.5;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--clr-controls-text);
+  transition: color 0.2s;
+
+  &:hover {
+    color: var(--clr-text-hover);
+  }
+}
+
+input[type="text"] {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--clr-text);
+  outline: none;
+}
+
+.header {
+  height: 300px;
+  padding-top: 4.5rem;
+  background-image: var(--clr-header-bg-mobile);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-image 0.3s ease-in-out;
+}
+
+.header__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h1 {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.4em;
+  }
+}
+
+.theme-toggle {
+  &__icon--sun { display: none; }
+  &__icon--moon { display: block; }
+}
+
+.dark-theme .theme-toggle {
+  &__icon--sun { display: block; }
+  &__icon--moon { display: none; }
+}
+
+main {
+  margin-top: -140px;
+}
+
+.new-todo-form, .todo-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background-color: var(--clr-todo-bg);
+  border-bottom: 1px solid var(--clr-border);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.new-todo-form {
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+}
+
+.checkbox-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.checkbox-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--clr-border);
+  cursor: pointer;
+  transition: border-color 0.2s;
+
+  &::after {
+    content: '';
+    background-image: url('./images/icon-check.svg');
+    width: 11px;
+    height: 9px;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  &:hover {
+    border-color: var(--clr-primary-400);
+  }
+}
+
+.checkbox-input:checked + .checkbox-label {
+  background: var(--clr-check-bg);
+  border: 1px solid transparent;
+
+  &::after {
+    opacity: 1;
+  }
+}
+
+.todo-list-container {
+  background-color: var(--clr-todo-bg);
+  border-radius: 5px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.todo-list {
+  list-style: none;
+}
+
+.todo-item {
+  p {
+    flex-grow: 1;
+    cursor: grab;
+  }
+
+  &--completed p {
+    text-decoration: line-through;
+    color: var(--clr-text-completed);
+  }
+
+  &--dragging {
+    opacity: 0.5;
+  }
+}
+
+.delete-btn {
+  background-image: url('./images/icon-cross.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 18px;
+  height: 18px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.todo-item:hover .delete-btn {
+  opacity: 1;
+}
+
+.todo-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  font-size: 0.875rem;
+  color: var(--clr-controls-text);
+
+  .filters {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+.filter-btn.active {
+  color: var(--clr-primary-400);
+}
+
+.drag-drop-info {
+  text-align: center;
+  margin-top: 3rem;
+  color: var(--clr-controls-text);
+}
+
+@media (max-width: 600px) {
+  .todo-controls .filters {
+    display: none;
+  }
+
+  .todo-list-container {
+    position: relative;
+    margin-bottom: 4rem;
+  }
+  
+  .filters {
+    position: absolute;
+    bottom: -4.5rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    background-color: var(--clr-todo-bg);
+    border-radius: 5px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (min-width: 601px) {
+  .header {
+    background-image: var(--clr-header-bg-desktop);
+  }
+  
+  .filters {
+    display: flex !important;
+  }
+}

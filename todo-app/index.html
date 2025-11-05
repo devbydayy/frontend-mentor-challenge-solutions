@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Todo app</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header__content">
+        <h1>TODO</h1>
+        <button class="theme-toggle" aria-label="Toggle light and dark theme">
+          <img class="theme-toggle__icon--sun" src="./images/icon-sun.svg" width="26" height="26" alt="Sun icon"/>
+          <img class="theme-toggle__icon--moon" src="./images/icon-moon.svg" width="26" height="26" alt="Moon icon"/>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <form class="new-todo-form">
+        <div class="checkbox-wrapper">
+          <input type="checkbox" id="new-todo-check" class="checkbox-input" disabled>
+          <label for="new-todo-check" class="checkbox-label" aria-label="New todo checkbox"></label>
+        </div>
+        <input type="text" class="new-todo-input" placeholder="Create a new todo..." aria-label="Create a new todo">
+      </form>
+      <div class="todo-list-container">
+        <ul class="todo-list">
+          </ul>
+        <div class="todo-controls">
+          <p class="items-left">5 items left</p>
+          <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="active">Active</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+          </div>
+          <button class="clear-completed-btn">Clear Completed</button>
+        </div>
+      </div>
+      <p class="drag-drop-info">Drag and drop to reorder list</p>
+    </div>
+  </main>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">DevbyDay</a>.
+  </div>
+  <script src="script.js" defer></script>
+</body>
+</html>
