@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Desserts Shop</title>
+  <link rel="icon" type="image/png" href="./images/favicon-32x32.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="main">
+    <section>
+      <h1>Desserts</h1>
+      <ul class="product-grid" id="productGrid" role="list"></ul>
+    </section>
+
+    <aside class="cart" id="cart" aria-labelledby="cartHeading">
+      <h2 id="cartHeading" class="cart-title">Your Cart (<span id="cartCount">0</span>)</h2>
+      <div id="cartBody">
+        <p class="empty" id="emptyMessage">
+          <img src="./images/illustration-empty-cart.svg" alt="">
+          Your cart is empty
+        </p>
+        <ul class="cart-list" id="cartList"></ul>
+      </div>
+      <div class="totals">
+        <div class="total-line">
+          <span>Order Total</span>
+          <strong id="total">$0.00</strong>
+        </div>
+        <div class="carbon">
+          <img src="./images/icon-carbon-neutral.svg" alt="">
+          <span>This is a <strong>carbon-neutral</strong> delivery</span>
+        </div>
+      </div>
+      <button id="confirmOrderBtn" class="btn primary">Confirm Order</button>
+    </aside>
+  </main>
+
+  <!-- Modal -->
+  <div id="orderModal" class="modal" aria-hidden="true">
+    <div class="modal-panel">
+      <img src="./images/icon-order-confirmed.svg" alt="" class="modal-icon">
+      <h3>Order Confirmed</h3>
+      <p>We hope you enjoy your food!</p>
+      <div id="orderSummary"></div>
+      <button id="startAnotherBtn" class="btn primary">Start New Order</button>
+    </div>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
