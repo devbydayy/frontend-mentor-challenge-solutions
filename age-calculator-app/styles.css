@@ -1,0 +1,190 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins-ExtraBoldItalic.ttf') format('truetype');
+  font-weight: 800;
+  font-style: italic;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: hsl(0, 0%, 94%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 1rem;
+}
+
+.age-calculator {
+  background: hsl(0, 100%, 100%);
+  padding: 2rem;
+  border-radius: 1.5rem 1.5rem 8rem 1.5rem;
+  min-width: 480px;
+  max-width: 700px;
+  width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form .inputs {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 100px;
+  max-width: 120px;
+}
+
+.input-group label {
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: hsl(0, 1%, 44%);
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.input-group input {
+  font-size: 1.5rem;
+  font-weight: 800;
+  padding: 0.5rem;
+  border: 1px solid hsl(0, 0%, 86%);
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.input-group input:focus {
+  border-color: hsl(259, 100%, 65%);
+  outline: none;
+}
+
+.input-group.error input {
+  border-color: hsl(0, 100%, 67%);
+}
+
+.error-msg {
+  font-size: 0.75rem;
+  color: hsl(0, 100%, 67%);
+  margin-top: 0.25rem;
+  font-weight: 400; 
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 2rem 0;
+}
+
+.divider hr {
+  flex: 1;
+  border: 1px solid hsl(0, 0%, 86%);
+}
+
+.submit-btn {
+  background: hsl(259, 100%, 65%);
+  border: none;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: hsl(0, 100%, 100%);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  position: absolute;
+  right: 0;
+  font-weight: 700;
+}
+
+.submit-btn:hover,
+.submit-btn:focus {
+  background: hsl(229, 100%, 70%); 
+}
+
+.results h2 {
+  font-size: 4.9rem;
+  font-weight: 800;
+  font-style: italic;
+  margin: 0.05rem 0;
+  color: hsl(0, 0%, 0%);
+}
+
+.results h2 span {
+  color: hsl(259, 100%, 65%);
+  font-size: 3.5rem;
+  font-weight: 800; 
+}
+
+@media (max-width: 480px) {
+  .age-calculator {
+    padding: 1.5rem;
+  }
+
+  .form .inputs {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .input-group {
+    flex: 1 1 80px;
+    max-width: 90px;
+  }
+
+  .results h2 {
+    font-size: 2.5rem;
+  }
+
+  .results h2 span {
+    font-size: 3rem;
+  }
+}
+
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
