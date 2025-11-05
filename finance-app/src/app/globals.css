@@ -1,0 +1,66 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Public Sans';
+  src: url('/fonts/PublicSans-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  src: url('/fonts/PublicSans-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+}
+
+:root {
+  --color-Beige500: #98908B;
+  --color-Beige100: #F8F4F0;
+  --color-Grey900: #201F24;
+  --color-Grey500: #696868;
+  --color-Grey300: #B3B3B3;
+  --color-Grey100: #F2F2F2;
+  --color-Green: #277C78;
+  --color-Yellow: #F2CDAC;
+  --color-Cyan: #82C9D7;
+  --color-Navy: #626070;
+  --color-Red: #C94736;
+  --color-Purple: #826CB0;
+  --color-White: #FFFFFF;
+
+  --font-size-32: 32px;
+  --font-size-20: 20px;
+  --font-size-16: 16px;
+  --font-size-14: 14px;
+  --font-size-12: 12px;
+}
+
+body {
+  font-family: 'Public Sans', sans-serif;
+  background-color: var(--color-Beige100);
+  color: var(--color-Grey900);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-Beige100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-Grey300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-Grey500);
+}
+.recharts-sector:focus-visible {
+  outline: none !important;
+}
