@@ -1,0 +1,26 @@
+@import "variables";
+@import "mixins";
+
+body {
+  font-family: "League Spartan", sans-serif;
+  font-size: 15px;
+  color: hsl(180, 14%, 20%);
+  background-color: hsl(180, 52%, 96%); 
+  margin: 0;
+  color: $green-900;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.job-listings {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto; 
+}
+
+
+    .attribution { font-size: 16px; text-align: center; margin: 1rem 0;}
+    .attribution a { color: hsl(228, 45%, 44%); }
