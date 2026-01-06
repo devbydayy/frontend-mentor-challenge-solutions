@@ -3,6 +3,7 @@ import { Box, Button, Grid, Typography } from '@mui/material';
 import PotCard from '@/components/pots/PotCard';
 import AddIcon from '@mui/icons-material/Add';
 
+export const dynamic = "force-dynamic";
 
 async function getPotsData() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/data.json`);
