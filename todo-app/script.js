@@ -131,19 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 0);
         }
     });
-
-    todoList.addEventListener('dragend', (e) => {
-        if (draggedItem) {
-            draggedItem.classList.remove('todo-item--dragging');
-            draggedItem = null;
-
-            const newOrderIds = [...todoList.querySelectorAll('.todo-item')].map(item => parseInt(item.dataset.id));
-            
-            todos.sort((a, b) => newOrderIds.indexOf(a.id) - newOrderIds.indexOf(b.id));
-
-            saveTodos();
-        }
-    });
     
     todoList.addEventListener('dragover', (e) => {
         e.preventDefault();
@@ -170,7 +157,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 return closest;
             }
         }, { offset: Number.NEGATIVE_INFINITY }).element;
-    }
+    };
+
+    todoList.addEventListener('dragend', (e) => {
+        if (draggedItem) {
+            draggedItem.classList.remove('todo-item--dragging');
+            draggedItem = null;
+
+            const newOrderIds = [...todoList.querySelectorAll('.todo-item')].map(item => parseInt(item.dataset.id));
+            
+            todos.sort((a, b) => newOrderIds.indexOf(a.id) - newOrderIds.indexOf(b.id));
+
+            saveTodos();
+        }
+    });
 
     renderTodos();
+
 });
