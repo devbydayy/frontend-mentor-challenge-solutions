@@ -1,12 +1,13 @@
 @import "variables";
 
 .header {
-  background: $green-400 url("./images/bg-header-desktop.svg") no-repeat center;
+  background: $green-400 url("/images/bg-header-desktop.svg") no-repeat center;
   background-size: cover;
   height: 150px;
 
   @media (max-width: 768px) {
-    background: $green-400 url("./images/bg-header-mobile.svg") no-repeat center;
+    background: $green-400 url("/images/bg-header-mobile.svg") no-repeat center;
     height: 100px;
   }
 }
+
