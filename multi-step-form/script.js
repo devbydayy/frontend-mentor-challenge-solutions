@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     const steps = document.querySelectorAll('.form-step');
-    const stepNumbers = document.querySelectorAll('.step-number');
     const nextBtn = document.querySelector('.next-btn');
     const prevBtn = document.querySelector('.prev-btn');
     const confirmBtn = document.querySelector('.confirm-btn');
@@ -8,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const planCards = document.querySelectorAll('.plan-card');
     const addonCards = document.querySelectorAll('.addon-card');
     const changePlanBtn = document.querySelector('.change-plan-btn');
+    const buttonContainer = document.querySelector('.button-container');
+
 
     let currentStep = 0;
     const formData = {
@@ -33,40 +34,29 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function updateStep() {
-        steps.forEach((step, index) => {
-            step.classList.toggle('active', index === currentStep);
-        });
-
+        steps.forEach((step, index) => step.classList.toggle('active', index === currentStep));
         const sidebarSteps = document.querySelectorAll('.sidebar .step');
-        sidebarSteps.forEach((sidebarStep, index) => {
-            sidebarStep.classList.toggle('active', index === currentStep);
-        });
-
+        sidebarSteps.forEach((s, i) => s.classList.toggle('active', i === currentStep));
 
         if (currentStep === 0) {
             prevBtn.style.display = 'none';
             nextBtn.style.display = 'inline-block';
             confirmBtn.style.display = 'none';
-        } else if (currentStep > 0 && currentStep < steps.length - 2) { 
+        } else if (currentStep > 0 && currentStep < steps.length - 2) {
             prevBtn.style.display = 'inline-block';
             nextBtn.style.display = 'inline-block';
             confirmBtn.style.display = 'none';
-        } else if (currentStep === steps.length - 2) { 
+        } else if (currentStep === steps.length - 2) {
             prevBtn.style.display = 'inline-block';
             nextBtn.style.display = 'none';
             confirmBtn.style.display = 'inline-block';
-        } else if (currentStep === steps.length - 1) { 
+        } else if (currentStep === steps.length - 1) {
             prevBtn.style.display = 'none';
             nextBtn.style.display = 'none';
             confirmBtn.style.display = 'none';
         }
 
-        const buttonContainer = document.querySelector('.button-container');
-        if (currentStep === steps.length - 1) {
-            buttonContainer.style.display = 'none'; 
-        } else {
-            buttonContainer.style.display = 'flex';
-        }
+        buttonContainer.style.display = currentStep === steps.length - 1 ? 'none' : 'flex';
     }
 
     function validateStep1() {
@@ -75,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const emailField = document.getElementById('email');
         const phoneField = document.getElementById('phone');
 
-        // Reset errors
         [nameField, emailField, phoneField].forEach(field => {
             field.classList.remove('error');
             field.parentElement.querySelector('.error-message').style.display = 'none';
@@ -112,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
             formData.email = emailField.value.trim();
             formData.phone = phoneField.value.trim();
         }
+
         return isValid;
     }
 
@@ -153,9 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let total = planPrice;
 
         formData.addons = [];
-        document.querySelectorAll('input[name="addon"]:checked').forEach(checkbox => {
-            formData.addons.push(checkbox.value);
-        });
+        document.querySelectorAll('input[name="addon"]:checked').forEach(cb => formData.addons.push(cb.value));
 
         formData.addons.forEach(addon => {
             const addonName = addon.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
@@ -164,10 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const addonItem = document.createElement('div');
             addonItem.classList.add('summary-addon-item');
-            addonItem.innerHTML = `
-                <p>${addonName}</p>
-                <p class="addon-price">+$${addonPrice}/${formData.billing === 'monthly' ? 'mo' : 'yr'}</p>
-            `;
+            addonItem.innerHTML = `<p>${addonName}</p><p class="addon-price">+$${addonPrice}/${formData.billing === 'monthly' ? 'mo' : 'yr'}</p>`;
             summaryAddons.appendChild(addonItem);
         });
 
@@ -177,34 +162,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     nextBtn.addEventListener('click', () => {
         let isValid = false;
-        if (currentStep === 0) {
-            isValid = validateStep1();
-        } else if (currentStep === 1) {
-            isValid = validateStep2();
-        } else {
-            isValid = true; 
-        }
+        if (currentStep === 0) isValid = validateStep1();
+        else if (currentStep === 1) isValid = validateStep2();
+        else isValid = true;
 
-        if (isValid) {
-            if (currentStep < steps.length - 2) { 
-                currentStep++;
-                if (currentStep === steps.length - 2) { 
-                    updateSummary();
-                }
-                updateStep();
-            }
-        }
-    });
-
-    prevBtn.addEventListener('click', () => {
-        if (currentStep > 0) {
-            currentStep--;
+        if (isValid && currentStep < steps.length - 2) {
+            currentStep++;
+            if (currentStep === steps.length - 2) updateSummary();
             updateStep();
         }
     });
 
+    prevBtn.addEventListener('click', () => {
+        if (currentStep > 0) { currentStep--; updateStep(); }
+    });
+
     confirmBtn.addEventListener('click', () => {
-        if (currentStep === steps.length - 2) { 
+        if (currentStep === steps.length - 2) {
             currentStep = steps.length - 1;
             updateStep();
         }
@@ -226,9 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addonCards.forEach(card => {
         card.addEventListener('click', (e) => {
             const checkbox = card.querySelector('input[type="checkbox"]');
-            if (e.target !== checkbox) {
-                checkbox.checked = !checkbox.checked;
-            }
+            if (e.target !== checkbox) checkbox.checked = !checkbox.checked;
             card.classList.toggle('selected', checkbox.checked);
         });
     });
@@ -241,34 +213,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateStep();
     updateBillingCycle();
-
-    
-    console.log('Initial currentStep:', currentStep);
-    steps.forEach((step, i) => {
-        console.log(`Step ${i + 1} has active class:`, step.classList.contains('active'));
-    });
-});
-
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
-
-  const container = document.querySelector('.button-container');
-  const buttons = container.querySelectorAll('button');
-
-  function updateContainerAlignment() {
-    const visibleButtons = [...buttons].filter(btn => btn.offsetParent !== null);
-    if (visibleButtons.length === 1) {
-      container.classList.add('single-button');
-    } else {
-      container.classList.remove('single-button');
-    }
-  }
-
-  function updateStep() {
-    updateContainerAlignment();
-  }
-
-  updateStep();
 });
