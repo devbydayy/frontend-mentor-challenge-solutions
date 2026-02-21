@@ -167,7 +167,10 @@ body {
 
 .replies {
   margin-left: 64px;
-  margin-top: 12px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 
   .comment {
     background: $white;
@@ -304,4 +307,5 @@ button:focus { outline: 3px solid rgba(115,80,255,0.18); outline-offset: 2px; }
 
 .attribution { font-size: 11px; text-align: center; margin: 22px;}
 .attribution a { color: hsl(228, 45%, 44%); }
+
 
