@@ -9,12 +9,12 @@ const App = () => {
 
   const filterFunc = ({ role, level, languages, tools }) => {
     const tags = [role, level, ...languages, ...tools];
-    return filters.every(filter => tags.includes(filter));
+    return filters.every(SelectedFilter => tags.includes(SelectedFilter));
   };
 
-  const handleFilterClick = (filter) => {
-    if (!filters.includes(filter)) {
-      setFilters([...filters, filter]);
+  const handleFilterClick = (clickedFilter) => {
+    if (!filters.includes(clickedFilter)) {
+      setFilters([...filters, clickedFilter]);
     }
   };
 
