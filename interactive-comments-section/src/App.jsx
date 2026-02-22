@@ -108,7 +108,7 @@ export default function App() {
           currentUser={data.currentUser}
           placeholder="Add a comment..."
           btnText="SEND"
-          onSubmit={addComment}
+          onAddComment={addComment}
         />
       <div class="attribution">
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
@@ -118,3 +118,4 @@ export default function App() {
     </div>
   );
 }
+
