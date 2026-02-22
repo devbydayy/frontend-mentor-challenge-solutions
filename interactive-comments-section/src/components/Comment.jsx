@@ -101,7 +101,7 @@ export default function Comment({
           <CommentForm
             defaultValue={comment.content}
             btnText="UPDATE"
-            onSubmit={onSubmitEdit}
+            onAddComment={onSubmitEdit}
             small
           />
         )}
@@ -112,7 +112,7 @@ export default function Comment({
               currentUser={currentUser}
               placeholder={`@${comment.user.username}`}
               btnText="REPLY"
-              onSubmit={onSubmitReply}
+              onAddComment={onSubmitReply}
             />
           </div>
         )}
@@ -179,3 +179,4 @@ export default function Comment({
     </article>
   );
 }
+
