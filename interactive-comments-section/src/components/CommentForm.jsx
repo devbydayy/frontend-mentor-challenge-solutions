@@ -5,7 +5,7 @@ export default function CommentForm({
   currentUser,
   placeholder = "Add a comment...",
   btnText = "SEND",
-  onSubmit,
+  onAddComment,
   defaultValue = "",
   small = false
 }) {
@@ -15,7 +15,7 @@ export default function CommentForm({
     e && e.preventDefault();
     const trimmed = text.trim();
     if (!trimmed) return;
-    onSubmit(trimmed);
+    onAddComment(trimmed);
     setText("");
   };
 
@@ -36,3 +36,4 @@ export default function CommentForm({
     </form>
   );
 }
+
