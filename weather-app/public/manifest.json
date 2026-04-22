@@ -1,7 +1,7 @@
 {
   "name": "Weather Now",
   "short_name": "Weather",
-  "description": "Modern weather forecast app",
+  "description": "Your real-time weather companion",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f172a",
