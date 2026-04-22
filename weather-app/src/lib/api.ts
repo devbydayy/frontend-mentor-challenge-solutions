@@ -3,17 +3,30 @@ import { GeocodingApiResponse, WeatherAPIResponse } from "@/types";
 const GEOCODING_API_URL = 'https://geocoding-api.open-meteo.com/v1/search';
 const WEATHER_API_URL = 'https://api.open-meteo.com/v1/forecast';
 
+const REVALIDATE_TIME = 60 * 60;
+
 export const fetchLocations = async (query: string): Promise<GeocodingApiResponse> => {
     if (query.length < 2) return { results: [] };
-    const response = await fetch(`${GEOCODING_API_URL}?name=${query}&count=5`);
+
+    const url = `${GEOCODING_API_URL}?name=${query}&count=5`;
+
+    const response = await fetch(url, {
+        next: { revalidate: REVALIDATE_TIME },
+    });
+
     if (!response.ok) {
         throw new Error('Failed to fetch locations.');
     }
+
     return response.json();
 };
 
 
-export const fetchWeatherForLocation = async (lat: number, lon: number): Promise<WeatherAPIResponse> => {
+export const fetchWeatherForLocation = async (
+    lat: number,
+    lon: number
+): Promise<WeatherAPIResponse> => {
+
     const params = new URLSearchParams({
         latitude: lat.toString(),
         longitude: lon.toString(),
@@ -23,9 +36,15 @@ export const fetchWeatherForLocation = async (lat: number, lon: number): Promise
         timezone: 'auto',
     });
 
-    const response = await fetch(`${WEATHER_API_URL}?${params.toString()}`);
+    const url = `${WEATHER_API_URL}?${params.toString()}`;
+
+    const response = await fetch(url, {
+        next: { revalidate: REVALIDATE_TIME },
+    });
+
     if (!response.ok) {
         throw new Error('Failed to fetch weather data.');
     }
+
     return response.json();
 };
