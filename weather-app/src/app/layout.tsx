@@ -27,10 +27,11 @@ const dmSans = localFont({
     variable: '--font-dm-sans', 
 });
 
-
 export const metadata: Metadata = {
-  title: 'Weather Now',
-  description: 'Your real-time weather companion.',
+  title: "Weather Now",
+  description: "Your real-time weather companion",
+  manifest: "/manifest.json",
+  themeColor: "#0f172a",
 };
 
 export default function RootLayout({
