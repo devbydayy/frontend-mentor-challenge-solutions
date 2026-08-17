@@ -2,27 +2,34 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function CountryCard({ country }) {
+  const name = country.names?.common || 'Unknown';
+  const flagUrl = country.flag?.url_svg || country.flag?.url_png || '';
+  const population = country.population || 0;
+  const region = country.region || '';
+  const capital = country.capitals?.[0]?.name || '—';
+  const code = country.codes?.alpha_3 || country.uuid || '';
+
   return (
     <article className="card">
-      <Link to={`/country/${country.cca3}`} className="card-link">
+      <Link to={`/country/${code}`} className="card-link">
         <div className="flag">
           <img
-            src={country.flags.svg}
-            alt={`Flag of ${country.name.common}`}
+            src={flagUrl}
+            alt={`Flag of ${name}`}
           />
         </div>
         <div className="card-body">
-          <h2 className="country-name">{country.name.common}</h2>
+          <h2 className="country-name">{name}</h2>
           <p>
             <strong>Population:</strong>{" "}
-            {country.population.toLocaleString()}
+            {population.toLocaleString()}
           </p>
           <p>
-            <strong>Region:</strong> {country.region}
+            <strong>Region:</strong> {region}
           </p>
           <p>
             <strong>Capital:</strong>{" "}
-            {country.capital ? country.capital[0] : "—"}
+            {capital}
           </p>
         </div>
       </Link>
