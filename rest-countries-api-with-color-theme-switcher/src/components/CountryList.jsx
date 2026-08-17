@@ -8,19 +8,19 @@ export default function CountryList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [loadingMore, setLoadingMore] = useState(false);
-  const [page, setPage] = useState(1);
+  const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const [totalCountries, setTotalCountries] = useState(0);
 
   const API_KEY = 'rc_live_abbdcf8f65e7498ca213ceb0a2cdc7b4';
   const LIMIT = 25;
 
-  const fetchCountries = (pageNum, append = false) => {
+  const fetchCountries = (offsetValue, append = false) => {
     const setLoadingState = append ? setLoadingMore : setLoading;
     setLoadingState(true);
 
     fetch(
-      `https://api.restcountries.com/countries/v5?page=${pageNum}&limit=${LIMIT}`,
+      `https://api.restcountries.com/countries/v5?offset=${offsetValue}&limit=${LIMIT}`,
       { 
         headers: { 
           'Authorization': `Bearer ${API_KEY}` 
@@ -38,10 +38,9 @@ export default function CountryList() {
         const total = data.data?.meta?.total || 0;
         setTotalCountries(total);
         
-        const currentPage = data.data?.meta?.page || pageNum;
+        const currentOffset = data.data?.meta?.offset || offsetValue;
         const limit = data.data?.meta?.limit || LIMIT;
-        const totalPages = Math.ceil(total / limit);
-        setHasMore(currentPage < totalPages);
+        setHasMore((currentOffset + limit) < total);
         
         if (append) {
           setCountries(prev => [...prev, ...data.data.objects]);
@@ -65,14 +64,14 @@ export default function CountryList() {
   };
 
   useEffect(() => {
-    fetchCountries(1, false);
+    fetchCountries(0, false);
   }, []);
 
   const loadMore = () => {
     if (!loadingMore && hasMore) {
-      const nextPage = page + 1;
-      setPage(nextPage);
-      fetchCountries(nextPage, true);
+      const nextOffset = offset + LIMIT;
+      setOffset(nextOffset);
+      fetchCountries(nextOffset, true);
     }
   };
 
